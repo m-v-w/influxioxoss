@@ -1,0 +1,13 @@
+[Unit]
+Description=Influx GC
+
+[Service]
+ExecStart=/opt/influx/influxdb_iox run garbage-collector
+WorkingDirectory=/opt/influx/
+User=influxdb
+Group=influxdb
+Environment="INFLUXDB_IOX_BIND_ADDR=127.0.0.1:8088"
+Environment="INFLUXDB_IOX_GRPC_BIND_ADDR=127.0.0.1:8089"
+
+[Install]
+WantedBy=multi-user.target

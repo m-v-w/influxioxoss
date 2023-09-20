@@ -1,0 +1,13 @@
+[Unit]
+Description=Influx Compactor
+
+[Service]
+ExecStart=/opt/influx/influxdb_iox run compactor
+WorkingDirectory=/opt/influx/
+User=influxdb
+Group=influxdb
+Environment="INFLUXDB_IOX_BIND_ADDR=127.0.0.1:8086"
+Environment="INFLUXDB_IOX_GRPC_BIND_ADDR=127.0.0.1:8087"
+
+[Install]
+WantedBy=multi-user.target

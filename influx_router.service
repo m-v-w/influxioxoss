@@ -1,0 +1,13 @@
+[Unit]
+Description=Influx Router
+
+[Service]
+ExecStart=/opt/influx/influxdb_iox run router --ingester-addresses 127.0.0.1:8084
+WorkingDirectory=/opt/influx/
+User=influxdb
+Group=influxdb
+Environment="INFLUXDB_IOX_BIND_ADDR=0.0.0.0:8080"
+Environment="INFLUXDB_IOX_GRPC_BIND_ADDR=0.0.0.0:8081"
+
+[Install]
+WantedBy=multi-user.target
